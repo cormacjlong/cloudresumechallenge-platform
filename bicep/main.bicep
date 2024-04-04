@@ -64,6 +64,7 @@ module connectivityMod 'connectivity.bicep' = {
 // Create Role Assignments for Subscription
 resource miRoleAssignmentContributor 'Microsoft.Authorization/roleAssignments@2022-04-01' = [ for miRoleAssId in miRoleAssIds: if (miRoleAssId.scope == 'Subscription') {
   name: guid(subscription().id, 'mi-sub-${miRoleAssId.name}', miRoleAssId.id)
+  scope: subscription()
   properties: {
     principalId: identityMod.outputs.miPrincipalId
     roleDefinitionId: '/subscriptions/${subscription().subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/${miRoleAssId.id}'

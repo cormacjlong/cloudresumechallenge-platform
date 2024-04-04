@@ -4,12 +4,12 @@ param githubRepos array = [
   {
     name: 'cormacjlong/cloudresumechallenge-frontend'
     ref: 'crc-frontend'
-    branch: 'main'
+    branch: 'master'
   }
   {
     name: 'cormacjlong/cloudresumechallenge-backend'
     ref: 'crc-backend'
-    branch: 'master'
+    branch: 'main'
   }
 ]
 
