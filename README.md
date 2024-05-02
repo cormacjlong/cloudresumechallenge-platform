@@ -1,6 +1,6 @@
 # Cloud Resume Challenge - Setup Repository
 
-This repository contains the Bicep code for deploying the shared resources used by both the backend and frontend of my [Cloud Resume Challenge](https://cloudresumechallenge.dev) project.
+This repository contains the Bicep code for deploying the shared resources used by both the backend and frontend of my <a href="https://cloudresumechallenge.dev" target="_blank">Cloud Resume Challenge</a> project.
 
 ## Overview
 
