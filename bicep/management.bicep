@@ -16,6 +16,40 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
     resource blobContainer 'containers@2023-01-01' = {
       name: 'terraform-state'
     }
+    properties: {
+      isVersioningEnabled: true // Versioning should be enabled to ensure that the state file is not lost
+    }
+  }
+}
+
+// Create lifecycle policy to delete blob versions older than 3 days
+resource lifecyclePolicy 'Microsoft.Storage/storageAccounts/managementPolicies@2023-01-01' = {
+  parent: storageAccount
+  name: 'default'
+  properties: {
+    policy: {
+      rules: [
+        {
+          enabled: true
+          name: 'Delete blob versions older than 3 days'
+          type: 'Lifecycle'
+          definition: {
+            actions: {
+              version: {
+                delete: {
+                  daysAfterCreationGreaterThan: 3
+                }
+              }
+            }
+            filters: {
+              blobTypes: [
+                'blockBlob'
+              ]
+            }
+          }
+        }
+      ]
+    }
   }
 }
 

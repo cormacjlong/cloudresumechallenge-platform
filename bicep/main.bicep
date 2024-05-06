@@ -38,7 +38,7 @@ module managementMod 'management.bicep' = {
   scope: resourceGroup(managementRg.name)
   params: {
     saName: 'stterraform${suffix}'
-    location: managementRg.location
+    location: location
     miId: identityMod.outputs.miPrincipalId
   }
 }
@@ -48,7 +48,7 @@ module identityMod 'identity.bicep' = {
   name: 'identityMod'
   scope: resourceGroup(identityRg.name)
   params: {
-    location: identityRg.location
+    location: location
   }
 }
 
@@ -57,7 +57,7 @@ module connectivityMod 'connectivity.bicep' = {
   name: 'connectivityMod'
   scope: resourceGroup(connectivityRg.name)
   params: {
-    location: connectivityRg.location
+    location: location
   }
 }
 
