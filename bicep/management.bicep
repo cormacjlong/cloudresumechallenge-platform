@@ -18,6 +18,10 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2019-06-01' = {
     }
     properties: {
       isVersioningEnabled: true // Versioning should be enabled to ensure that the state file is not lost
+      deleteRetentionPolicy: {
+        enabled: true
+        days: 1
+      }
     }
   }
 }
